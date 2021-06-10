@@ -1,12 +1,16 @@
 package com.Model;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +27,18 @@ public class Client {
 	
 	@Column(name = "prenom", nullable = true, unique = false, length = 50)
 	private String prenom;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="client_id")
+	private Set<Produit> produits;
+
+	public Set<Produit> getProduits() {
+		return produits;
+	}
+
+	public void setProduits(Set<Produit> produits) {
+		this.produits = produits;
+	}
 
 	public Client() {
 		super();
