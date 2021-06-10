@@ -10,19 +10,18 @@ import com.TD_Hibernate_Git.HibernateUtil;
 
 public class ClientService implements Serializable {
 	
-	public boolean create(Client c)
+	public boolean create(Client c, Session s)
 	{
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-
-		session.save(c); // INSERT INTO Client (nom, prenom) VALUES (c.getNom(), c.getPrenom());
-		
-		
-		session.getTransaction().commit();
-		HibernateUtil.shutdown();
-		
+		s.save(c); // INSERT INTO Client (nom, prenom) VALUES (c.getNom(), c.getPrenom());
 		
 		return true;
+	}
+	
+	public void delete(Client c, Session s)
+	{
+		c = s.get(Client.class, 3);
+		s.delete(c); 
+		
 	}
 
 }

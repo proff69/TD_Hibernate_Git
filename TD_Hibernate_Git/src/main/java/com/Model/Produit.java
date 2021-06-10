@@ -34,6 +34,12 @@ public class Produit {
 	
 	@ManyToOne
 	private Client client;
+	
+	
+
+	public Produit() {
+		super();
+	}
 
 	public Produit(String marque, String reference, String dateAchat, double prix, String designation) {
 		super();
