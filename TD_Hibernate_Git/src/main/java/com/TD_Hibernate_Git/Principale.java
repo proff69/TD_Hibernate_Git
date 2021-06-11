@@ -7,6 +7,7 @@ import java.util.Set;
 import org.hibernate.Session;
 
 import com.Model.Client;
+import com.Model.Compte;
 import com.Model.Produit;
 import com.Service.ClientService;
 import com.Service.ProduitService;
@@ -55,6 +56,14 @@ public class Principale {
 		{
 			System.out.println("reference : " + pr.getReference() + ", prix : " + pr.getPrix());
 		}
+		
+		
+		Compte cpt1 = new Compte("test@test.com", "test");
+		Client c3 = new Client("Sophie", "Marie");
+		
+		session.saveOrUpdate(cpt1);
+		c3.setCompte(cpt1);
+		session.saveOrUpdate(c3);
 		
 		
 		session.getTransaction().commit();
