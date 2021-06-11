@@ -1,6 +1,7 @@
 package com.TD_Hibernate_Git;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
@@ -29,7 +30,18 @@ public class Principale {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		cs.delete(c1, session);
+//		cs.delete(session, 3);
+//		c1.setPrenom("Paul");
+//		cs.update(session, 2);
+		Client c2 = cs.findById(session, 1);
+		System.out.println("nom : " + c2.getNom() + ", prenom : " + c2.getPrenom() + ", liste produits : " + c2.getProduits().toString());
+		
+		List<Client> listeC = cs.findAll(session);
+
+		for(Client cli : listeC)
+		{
+			System.out.println("nom : " + cli.getNom() + ", prenom : " + cli.getPrenom());
+		}
 		
 		session.getTransaction().commit();
 		HibernateUtil.shutdown();

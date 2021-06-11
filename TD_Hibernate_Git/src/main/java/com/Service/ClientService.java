@@ -19,15 +19,16 @@ public class ClientService implements Serializable {
 		return true;
 	}
 	
-	public void delete(Client c, Session s, int id)
+	public void delete(Session s, int id)
 	{
-		c = s.get(Client.class, id);
+		Client c = s.get(Client.class, id);
 		s.delete(c); 
 	}
 	
-	public void update(Client c, Session s, int id)
+	public void update(Session s, int id)
 	{
-		c = s.get(Client.class, id);
+		Client c = s.get(Client.class, id);
+		c.setPrenom("Paul");
 		s.update(c); // UPDATE client SET nom = c.getNom(), prenom = c.getPrenom() where id = id;
 	}
 	
