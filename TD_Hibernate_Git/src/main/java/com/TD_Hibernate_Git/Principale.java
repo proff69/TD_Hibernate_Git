@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import com.Model.Client;
 import com.Model.Produit;
 import com.Service.ClientService;
+import com.Service.ProduitService;
 
 public class Principale {
 
@@ -42,6 +43,19 @@ public class Principale {
 		{
 			System.out.println("nom : " + cli.getNom() + ", prenom : " + cli.getPrenom());
 		}
+		
+		ProduitService ps = new ProduitService();
+		Produit prod1 = ps.findById(session, 1);
+		
+		System.out.println("reference : " + prod1.getReference() + ", prix : " + prod1.getPrix());
+		
+		List<Produit> listeProd = ps.findAll(session);
+
+		for(Produit pr : listeProd)
+		{
+			System.out.println("reference : " + pr.getReference() + ", prix : " + pr.getPrix());
+		}
+		
 		
 		session.getTransaction().commit();
 		HibernateUtil.shutdown();
