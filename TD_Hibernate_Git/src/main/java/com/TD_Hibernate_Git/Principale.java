@@ -55,7 +55,7 @@ public class Principale {
 		{
 			System.out.println("reference : " + pr.getReference() + ", prix : " + pr.getPrix());
 		}
-		
+		//commentaire
 		
 		session.getTransaction().commit();
 		HibernateUtil.shutdown();
