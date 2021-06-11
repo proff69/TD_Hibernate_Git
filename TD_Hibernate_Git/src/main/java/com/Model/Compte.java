@@ -26,4 +26,48 @@ public class Compte {
 	@OneToOne(mappedBy = "compte")
 	private Client client;
 
+	public Compte() {
+		super();
+	}
+
+	public Compte(String email, String mot_de_passe) {
+		super();
+		this.email = email;
+		this.mot_de_passe = mot_de_passe;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMot_de_passe() {
+		return mot_de_passe;
+	}
+
+	public void setMot_de_passe(String mot_de_passe) {
+		this.mot_de_passe = mot_de_passe;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	
+	
+
 }
